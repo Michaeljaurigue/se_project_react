@@ -1,0 +1,35 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 328px;
+  height: 328px;
+  background-color: rgba(185, 183, 183, 0.3);
+  background-position: center;
+  background-size: 226px;
+  background-repeat: no-repeat;
+  border: 1px solid black;
+  border-radius: 19px;
+  margin: 10px;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card_name {
+  border: 1px solid black;
+  background-color: white;
+  padding: 2px 12px;
+}
+
+.card_image {
+  max-width: 226px;
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 280px;
+    height: 280px;
+  }
+}
