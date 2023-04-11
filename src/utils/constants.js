@@ -45,72 +45,72 @@ const weatherImages = [
   {
     type: "Clear",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Clear.png",
+    url: "../../images/weather-conditions-png/day/Day_Clear.png",
   },
   {
     type: "Clouds",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Cloudy.png",
+    url: "../../images/weather-conditions-png/day/Day_Cloudy.png",
   },
   {
     type: "Rain",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Rain.png",
+    url: "../../images/weather-conditions-png/day/Day_Rain.png",
   },
   {
     type: "Thunderstorm",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Thunderstorm.png",
+    url: "../../images/weather-conditions-png/day/Day_Thunderstorm.png",
   },
   {
     type: "Snow",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Snow.png",
+    url: "../../images/weather-conditions-png/day/Day_Snow.png",
   },
   {
     type: "Fog",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Fog.png",
+    url: "../../images/weather-conditions-png/day/Day_Fog.png",
   },
   {
     type: "Mist",
     day: true,
-    url: "./images/weather-conditions-png/day/Day_Fog.png",
+    url: "../../images/weather-conditions-png/day/Day_Fog.png",
   },
   {
     type: "Clear",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Clear.png",
+    url: "../../images/weather-conditions-png/night/Night_Clear.png",
   },
   {
     type: "Clouds",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Cloudy.png",
+    url: "../../images/weather-conditions-png/night/Night_Cloudy.png",
   },
   {
     type: "Rain",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Rain.png",
+    url: "../../images/weather-conditions-png/night/Night_Rain.png",
   },
   {
     type: "Thunderstorm",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Thunderstorm.png",
+    url: "../../images/weather-conditions-png/night/Night_Thunderstorm.png",
   },
   {
     type: "Snow",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Snow.png",
+    url: "../../images/weather-conditions-png/night/Night_Snow.png",
   },
   {
     type: "Fog",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Fog.png",
+    url: "../../images/weather-conditions-png/night/Night_Fog.png",
   },
   {
     type: "Mist",
     day: false,
-    url: "./images/weather-conditions-png/night/Night_Fog.png",
+    url: "../../images/weather-conditions-png/night/Night_Fog.png",
   },
 ];
 

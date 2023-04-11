@@ -34,7 +34,7 @@
   height: 16px;
   /* background-color: transparent; */
   background-size: 16px;
-  background-image: url(../images/image-preview-close-button.svg);
+  background-image: url(/src/images/image-preview-close-button.svg);
   border: none;
 }
 
