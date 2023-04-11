@@ -41,85 +41,77 @@ const defaultClothingItems = [
   },
 ];
 
-// const weatherImages = [
-//   {
-//     type: "Clear",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Clear.png").default,
-//   },
-//   {
-//     type: "Clouds",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Cloudy.png").default,
-//   },
-//   {
-//     type: "Rain",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Rain.png").default,
-//   },
-//   {
-//     type: "Thunderstorm",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Thunderstorm.png")
-//       .default,
-//   },
-//   {
-//     type: "Snow",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Snow.png").default,
-//   },
-//   {
-//     type: "Fog",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Fog.png").default,
-//   },
-//   {
-//     type: "Mist",
-//     day: true,
-//     url: require("./images/weather-conditions-png/day/Day_Fog.png").default,
-//   },
-//   {
-//     type: "Clear",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Clear.png")
-//       .default,
-//   },
-//   {
-//     type: "Clouds",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Cloudy.png")
-//       .default,
-//   },
-//   {
-//     type: "Rain",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Rain.png")
-//       .default,
-//   },
-//   {
-//     type: "Thunderstorm",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Thunderstorm.png")
-//       .default,
-//   },
-//   {
-//     type: "Snow",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Snow.png")
-//       .default,
-//   },
-//   {
-//     type: "Fog",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Fog.png")
-//       .default,
-//   },
-//   {
-//     type: "Mist",
-//     day: false,
-//     url: require("./images/weather-conditions-png/night/Night_Fog.png")
-//       .default,
-//   },
-// ];
+const weatherImages = [
+  {
+    type: "Clear",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Clear.png",
+  },
+  {
+    type: "Clouds",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Cloudy.png",
+  },
+  {
+    type: "Rain",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Rain.png",
+  },
+  {
+    type: "Thunderstorm",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Thunderstorm.png",
+  },
+  {
+    type: "Snow",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Snow.png",
+  },
+  {
+    type: "Fog",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Fog.png",
+  },
+  {
+    type: "Mist",
+    day: true,
+    url: "./images/weather-conditions-png/day/Day_Fog.png",
+  },
+  {
+    type: "Clear",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Clear.png",
+  },
+  {
+    type: "Clouds",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Cloudy.png",
+  },
+  {
+    type: "Rain",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Rain.png",
+  },
+  {
+    type: "Thunderstorm",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Thunderstorm.png",
+  },
+  {
+    type: "Snow",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Snow.png",
+  },
+  {
+    type: "Fog",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Fog.png",
+  },
+  {
+    type: "Mist",
+    day: false,
+    url: "./images/weather-conditions-png/night/Night_Fog.png",
+  },
+];
 
 export { defaultClothingItems, longitude, latitude, APIKey };

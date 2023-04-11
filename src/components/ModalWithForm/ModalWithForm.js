@@ -1,4 +1,4 @@
-import "./ModalWithForm.css";
+import "../ModalWithForm/ModalWithForm.css";
 
 const ModalWithForm = ({
   children,
@@ -10,13 +10,21 @@ const ModalWithForm = ({
 
   return (
     <div className={"modal modal_type_${name}"}>
-      <div className="modal__content">
-        <button type="button" onClick={onClose}>
-          Close
-        </button>
-        <h3>{title}</h3>
-        <form>{children}</form>
-        <button type="submit">{buttonText}</button>
+      <div className="modal__window">
+        <button
+          className="modal__close"
+          type="button"
+          onClick={onClose}
+        ></button>
+        <h3 className="modal__title">{title}</h3>
+        <form className="modal__form">
+          <fieldset className="modal__fieldset">
+            {children}
+            <button className="modal__submit" type="submit">
+              {buttonText}
+            </button>
+          </fieldset>
+        </form>
       </div>
     </div>
   );

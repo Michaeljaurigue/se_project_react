@@ -1,0 +1,40 @@
+.modal__label {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.modal__label_radio {
+  margin-top: 8px;
+  margin-bottom: 0px;
+}
+
+.modal__input {
+  font-size: 16px;
+  line-height: 20px;
+  width: 440px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.modal__input_radio {
+  margin: 0 8px 0 0;
+  width: auto;
+}
+
+.modal__radio-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media screen and (max-width: 560px) {
+  .modal__input {
+    width: 250px;
+  }
+
+  .modal__input_radio {
+    margin-bottom: 12px;
+    width: auto;
+  }
+}

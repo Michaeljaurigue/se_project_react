@@ -4,8 +4,10 @@ import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useState, useEffect } from "react";
-import AddItemModal from "../AddItemModal/AddItemModal";
+import ItemModal from "../ItemModal/ItemModal";
 import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
+import "../../fonts/fonts.css";
+import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -33,40 +35,15 @@ function App() {
   }, []);
 
   return (
-    <div className='app'>
+    <div className="app">
       <Header onCreateModal={handleCreateModal} />
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
-      {activeModal === "create" && (
-        <ModalWithForm title="New Garment" onClose={handleCloseModal}>
-          <label>
-            Name
-            <input type="text" name="name" minLength="1" maxLength="30" />
-          </label>
-          <label>
-            Image
-            <input type="url" name="link" minLength="1" maxLength="30" />
-          </label>
-          <p>Select the weather type:</p>
-          <div>
-            <div>
-              <input type="radio" id="hot" value="hot" />
-              <label>Hot</label>
-            </div>
-            <div>
-              <input type="radio" id="Warm" value="Warm" />
-              <label>Warm</label>
-            </div>
-            <div>
-              <input type="radio" id="Cold" value="Cold" />
-              <label>Cold</label>
-            </div>
-          </div>
-        </ModalWithForm>
-      )}
+
+      {activeModal === "create" && <AddItemModal onClose={handleCloseModal} />}
 
       {activeModal === "preview" && (
-        <AddItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
       )}
     </div>
   );
