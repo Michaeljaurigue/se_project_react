@@ -1,7 +1,7 @@
 import "../ItemModal/ItemModal.css";
 
 const ItemModal = ({ selectedCard, onClose }) => {
-  console.log("ItemModal");
+
 
   return (
     <div className="modal modal__preview" onClick={onClose}>
