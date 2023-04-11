@@ -17,10 +17,11 @@ function App() {
     setActiveModal("create");
   };
 
-  const handleCloseModal = (evt) => {
+  const handleClickOutside = (evt) => {
     if (
       evt.target.classList.contains("modal") ||
-      evt.target.classList.contains("modal__close")
+      evt.target.classList.contains("modal__close") ||
+      evt.target.classList.contains("modal__close-preview")
     ) {
       setActiveModal(null);
     }
@@ -36,10 +37,14 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temp = parseWeatherData(data);
-      setTemp(temp);
-    });
+    getForecastWeather()
+      .then((data) => {
+        const temp = parseWeatherData(data);
+        setTemp(temp);
+      })
+      .catch((error) => {
+        console.log("Error fetching forecast weather data:", error);
+      });
   }, []);
 
   useEffect(() => {
@@ -62,10 +67,12 @@ function App() {
       <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
       <Footer />
 
-      {activeModal === "create" && <AddItemModal onClose={handleCloseModal} />}
+      {activeModal === "create" && (
+        <AddItemModal onClose={handleClickOutside} />
+      )}
 
       {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        <ItemModal selectedCard={selectedCard} onClose={handleClickOutside} />
       )}
     </div>
   );

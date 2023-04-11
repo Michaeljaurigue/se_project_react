@@ -1,70 +1,17 @@
-# Getting Started with Create React App
+Welcome to our weather app, built using React.js!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This app has been designed to help you choose what to wear based on the current weather conditions. The app consists of several components that work together to provide a seamless user experience. Let's take a closer look at them:
 
-## Available Scripts
+Header: This component displays the app's logo and name, as well as the current temperature. The temperature data is passed down from the App component as props.
 
-In the project directory, you can run:
+Main: This is the main component of the app, which contains the WeatherCard component and the clothing item cards. The WeatherCard component shows the current temperature, while the clothing item cards are filtered based on the current weather conditions. The ItemCard component is wrapped in an unordered list and uses the filter() and map() methods to display the appropriate items.
 
-### `npm start`
+ItemCard: This component displays an image and title for an item of clothing. When the user clicks on the image, the ItemModal component opens. The handleCardClick() function, which changes the state of the app to open the modal, is passed down from the App component as props.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ItemModal: This component displays a larger image and title for an item of clothing in a modal window. The onClose prop works the same way as the ModalWithForm component.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Footer: This component displays meta information about the app, such as the copyright and production year.
 
-### `npm test`
+Our app has been designed using Figma, which allowed us to create a visually appealing and intuitive user interface. We chose to use React.js to build this app because it is a powerful and popular JavaScript library that allows us to create dynamic, interactive user interfaces with ease.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thank you for using our app, and we hope it helps you choose the perfect outfit for any weather condition!
