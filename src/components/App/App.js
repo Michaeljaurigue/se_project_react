@@ -18,8 +18,17 @@ function App() {
     setActiveModal("create");
   };
 
-  const handleCloseModal = () => {
-    setActiveModal("");
+  const handleCloseModal = (evt) => {
+    if (
+      evt.target.classList.contains("modal") ||
+      evt.target.classList.contains("modal__close")
+    ) {
+      setActiveModal(null);
+    }
+  };
+
+  const closeModal = () => {
+    setActiveModal(null);
   };
 
   const handleSelectedCard = (card) => {
@@ -33,6 +42,20 @@ function App() {
       setTemp(temp);
     });
   }, []);
+
+  useEffect(() => {
+    if (!activeModal) return;
+
+    const handleEscClose = (evt) => {
+      if (evt.key === "Escape") {
+        closeModal();
+      }
+    };
+    document.addEventListener("keydown", handleEscClose);
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
 
   return (
     <div className="app">

@@ -4,10 +4,10 @@ const ItemModal = ({ selectedCard, onClose }) => {
   console.log("ItemModal");
 
   return (
-    <div className="modal modal__preview">
+    <div className="modal modal__preview" onClick={onClose}>
       <div className="modal__container">
         <button
-          className="modal__close"
+          className="modal__close-preview modal__close"
           type="button"
           onClick={onClose}
         ></button>

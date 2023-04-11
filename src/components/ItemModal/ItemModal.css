@@ -26,6 +26,22 @@
   cursor: pointer;
 }
 
+.modal__close-preview {
+  position: absolute;
+  top: 23px;
+  right: 23px;
+  width: 16px;
+  height: 16px;
+  /* background-color: transparent; */
+  background-size: 16px;
+  background-image: url(../images/image-preview-close-button.svg);
+  border: none;
+}
+
+.modal__close-preview:hover {
+  cursor: pointer;
+}
+
 .modal__image {
   max-width: 498px;
   border-top-right-radius: 16px;
