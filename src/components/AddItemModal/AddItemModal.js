@@ -4,7 +4,7 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 function AddItemModal({ onClose }) {
   return (
-    <ModalWithForm title="New Garment" buttonText="Submit">
+    <ModalWithForm title="New Garment" buttonText="Add garment">
       <button className="modal__close" type="button" onClick={onClose}></button>
       <label className="modal__label">Name</label>
       <input
