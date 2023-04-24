@@ -8,15 +8,26 @@ const processServerResponse = (res) => {
   }
 };
 
-export const getForecastWeather = () => {
+const getForecastWeather = () => {
   const weatherApi = fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIKey}`
   ).then(processServerResponse);
   return weatherApi;
 };
 
-export const parseWeatherData = (data) => {
-  const main = data.main;
-  const temperature = main && main.temp;
-  return Math.ceil(temperature);
-};
+function parseWeatherData(data) {
+  console.log(data);
+  if (!data) {
+    return null;
+  } else {
+    const weather = [];
+    weather.city = data.name;
+    weather.temp = data.main.temp;
+    weather.condition = data.weather[0].main;
+    weather.sunrise = data.sys.sunrise;
+    weather.sunset = data.sys.sunset;
+    return weather;
+  }
+}
+
+export { getForecastWeather, parseWeatherData };

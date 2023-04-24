@@ -1,14 +1,17 @@
+// import { addCard } from "../../utils/api";
 import "../ItemCard/ItemCard.css";
 
-const ItemCard = ({ item, onSelectCard }) => {
+const ItemCard = ({ card, onCardClick }) => {
   return (
     <li className="card">
-      <p className="card_name">{item.name}</p>
+      <p className="card_name">{card.name}</p>
       <img
-        src={item.link}
+        src={card.link}
         alt="Clothing Items"
         className="card_image"
-        onClick={() => onSelectCard(item)}
+        onClick={() => {
+          onCardClick(card);
+        }}
       />
     </li>
   );

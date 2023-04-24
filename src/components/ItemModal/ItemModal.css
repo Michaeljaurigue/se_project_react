@@ -50,11 +50,26 @@
 
 .modal__description-wrap {
   display: flex;
-  flex-direction: column;
+  flex-direction: space-between;
+  justify-content: space-between;
+  justify-items: auto;
 }
 
 .modal__description {
   margin: 8px 0 0 32px;
+}
+
+.modal__delete-link {
+  border: none;
+  background-color: transparent;
+  font-family: "Cabinet-Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+
+  margin: 8px 32px 0 0;
+  color: rgba(255, 77, 0, 1);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 560px) {

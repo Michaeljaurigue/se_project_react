@@ -1,20 +1,15 @@
+import { useContext } from "react";
 import { defaultClothingItems } from "../../utils/constants";
 import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import "../Main/Main.css";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
+import { convertTemp, weatherTemp } from "../../utils/tempLogic";
 
-function Main({ weatherTemp, onSelectCard }) {
-  const getWeatherType = () => {
-    if (weatherTemp >= 86) {
-      return "hot";
-    } else if (weatherTemp >= 66 && weatherTemp <= 85) {
-      return "warm";
-    } else if (weatherTemp <= 65) {
-      return "cold";
-    }
-  };
-
-  const weatherType = getWeatherType();
+function Main({ weatherData, onCardClick }) {
+  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
+  const deg = convertTemp(weatherData.temp, currentTemperatureUnit);
+  const weatherType = weatherTemp(weatherData.temp);
 
   const filteredCards = defaultClothingItems.filter((item) => {
     return item.weather.toLowerCase() === weatherType;
@@ -22,14 +17,20 @@ function Main({ weatherTemp, onSelectCard }) {
 
   return (
     <main className="main">
-      <WeatherCard day={false} type="cloudy" weatherTemp={weatherTemp} />
+      <WeatherCard
+        day={false}
+        type="cloudy"
+        weatherData={weatherData}
+        deg={deg}
+        unit={currentTemperatureUnit}
+      />
       <div>
-        <div className="main__description">
-          Today is {weatherTemp} °F. You may want to wear:
-        </div>
+        <p className="main__description">
+          Today is {deg}. You may want to wear:
+        </p>
         <ul className="main__cards">
-          {filteredCards.map((item) => (
-            <ItemCard key={item.id} item={item} onSelectCard={onSelectCard} />
+          {filteredCards.map((card) => (
+            <ItemCard key={card.id} card={card} onCardClick={onCardClick} />
           ))}
         </ul>
       </div>
