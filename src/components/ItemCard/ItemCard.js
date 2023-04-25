@@ -1,4 +1,3 @@
-// import { addCard } from "../../utils/api";
 import "../ItemCard/ItemCard.css";
 
 const ItemCard = ({ card, onCardClick }) => {

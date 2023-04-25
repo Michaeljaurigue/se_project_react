@@ -2,6 +2,11 @@ const APIKey = "c553027043dfdc7c00ce9652c14c6e44";
 const latitude = 41.8781;
 const longitude = -87.623177;
 
+const configValidate = {
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 const defaultClothingItems = [
   {
     id: 0,
@@ -262,4 +267,5 @@ export {
   APIKey,
   weatherImages,
   weatherOptions,
+  configValidate,
 };

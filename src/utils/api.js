@@ -3,9 +3,13 @@ const baseUrl =
 
 const processServerResponse = (res) => {
   if (res.ok) {
-    return res.json();
+    try {
+      return res.json();
+    } catch (error) {
+      return Promise.reject(`Error parsing response: ${error}`);
+    }
   } else {
-    return Promise.reject(`Error: ${res.status}`);
+    return Promise.reject(`Network error: ${res.status}`);
   }
 };
 

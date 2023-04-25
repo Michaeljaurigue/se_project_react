@@ -10,10 +10,11 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import "../../fonts/fonts.css";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
-import { defaultClothingItems } from "../../utils/constants";
-import { addCard, getCards, deleteCard, updateCard } from "../../utils/api";
+// import { defaultClothingItems } from "../../utils/constants";
+import { addCard, getCards, deleteCard } from "../../utils/api";
 import DeleteCardModal from "../DeleteCardModal/DeleteCardModal";
-import api from "../../utils/api";
+import { ValidationContext } from "../../contexts/ValidationContext";
+
 
 function App() {
   const [weatherData, setWeatherData] = useState([]);
@@ -21,12 +22,16 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
-  //disableButton...
+  const [disableButton, setDisableButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleAddClothes = () => {
     setActiveModal("create");
   };
+
+  function handleSubmitButtonChange() {
+    setDisableButton(!disableButton);
+  }
 
   function handleAddItemSubmit(name, link, weather) {
     setIsLoading(true);
@@ -135,7 +140,7 @@ function App() {
           <Switch>
             <Route path="/profile">
               <Profile
-                cards={defaultClothingItems}
+                cards={clothingItems}
                 onCardClick={handleCardClick}
                 addClothes={handleAddClothes}
               />
@@ -143,7 +148,7 @@ function App() {
             <Route path="/">
               <Main
                 weatherData={weatherData}
-                cards={defaultClothingItems}
+                cards={clothingItems}
                 onCardClick={handleCardClick}
               />
             </Route>
@@ -151,7 +156,17 @@ function App() {
           <Footer />
 
           {activeModal === "create" && (
-            <AddItemModal onClose={closeActiveModal} />
+            <ValidationContext.Provider
+              value={{
+                disableButton,
+                setDisableButton,
+                handleSubmitButtonChange,
+                closeActiveModal,
+                handleAddItemSubmit,
+              }}
+            >
+              <AddItemModal onClose={closeActiveModal} isLoading={isLoading} />
+            </ValidationContext.Provider>
           )}
 
           {activeModal === "preview" && (

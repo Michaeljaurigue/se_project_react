@@ -16,7 +16,6 @@ const getForecastWeather = () => {
 };
 
 function parseWeatherData(data) {
-  console.log(data);
   if (!data) {
     return null;
   } else {
