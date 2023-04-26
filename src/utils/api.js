@@ -13,8 +13,9 @@ const processServerResponse = (res) => {
   }
 };
 
-function request(url, options) {
-  return fetch(url, options).then(processServerResponse);
+async function request(url, options) {
+  const res = await fetch(url, options);
+  return processServerResponse(res);
 }
 
 function getCards() {

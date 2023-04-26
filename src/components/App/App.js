@@ -15,7 +15,6 @@ import { addCard, getCards, deleteCard } from "../../utils/api";
 import DeleteCardModal from "../DeleteCardModal/DeleteCardModal";
 import { ValidationContext } from "../../contexts/ValidationContext";
 
-
 function App() {
   const [weatherData, setWeatherData] = useState([]);
   const [clothingItems, setClothingItems] = useState([]);
