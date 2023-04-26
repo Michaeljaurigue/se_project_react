@@ -1,5 +1,5 @@
 import React from "react";
-import SideBarasdfasdf from "../SideBarasdfasdf/SideBarasdfasdf";
+import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
@@ -7,7 +7,7 @@ function Profile({ cards, onCardClick, addClothes }) {
   return (
     <div className="profile">
       <div className="profile__side-bar">
-        <SideBarasdfasdf />
+        <SideBar />
       </div>
       <div className="profile__main">
         <ClothesSection
