@@ -1,8 +1,8 @@
 import React from "react";
 import avatar from "../../images/avatar.svg";
-import "./Sidebar.css";
+import "./SideBar.css";
 
-function Sidebar() {
+function SideBar() {
   return (
     <div className="sidebar__info">
       <img className="sidebar__avatar" src={avatar} alt="avatar" />
@@ -11,4 +11,4 @@ function Sidebar() {
   );
 }
 
-export default Sidebar;
+export default SideBar;
