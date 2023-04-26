@@ -33,13 +33,14 @@ function WeatherCard({ weatherData, deg }) {
 
   return (
     <div
-      className="weather" 
+      className="weather"
       style={{
         backgroundColor: backColor, //backColor is a state
         backgroundImage: `url(${backImage})`, //backImage is a state
       }}
     >
       <p className="weather__info">{deg}</p>
+      <br></br>
     </div>
   );
 }

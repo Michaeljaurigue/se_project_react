@@ -1,5 +1,5 @@
 import React from "react";
-import SideBar from "../Sidebar/Sidebar";
+import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 

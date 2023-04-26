@@ -1,11 +1,11 @@
 import avatar from "../../images/avatar.png";
-import "./Sidebar.css";
+import "./SideBar.css";
 
 function SideBar() {
   return (
     <div className="sidebar__info">
       <img className="sidebar__avatar" src={avatar} alt="avatar" />
-      <p className="sidebar__name">John Doe</p>
+      <p className="sidebar__name">Terrence Tegegne</p>
     </div>
   );
 }
