@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./WeatherCard.css";
 import { weatherImages } from "../../utils/constants";
 import imageError from "../../images/question.png";
+import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function WeatherCard({ weatherData, deg }) {
   const [backImage, setBackImage] = useState(imageError);
@@ -22,20 +23,20 @@ function WeatherCard({ weatherData, deg }) {
     setBackColor(
       weatherData.isDay ? "rgba(0, 163, 255, 1)" : "rgba(40, 104, 151, 1)"
     );
-  }, [weatherData.condition, weatherData.isDay]);
+  }, [weatherData.condition, weatherData.isDay]); //whenever weatherData.condition or weatherData.isDay changes, useEffect will run
 
   useEffect(() => {
     if (typeof backImageObject !== "undefined") {
-      setBackImage(backImageObject.image); //image is
+      setBackImage(backImageObject.image); //image is a property of backImageObject
     }
   }, [backImageObject]);
 
   return (
     <div
-      className="weather"
+      className="weather" 
       style={{
-        backgroundColor: backColor,
-        backgroundImage: `url(${backImage})`,
+        backgroundColor: backColor, //backColor is a state
+        backgroundImage: `url(${backImage})`, //backImage is a state
       }}
     >
       <p className="weather__info">{deg}</p>
