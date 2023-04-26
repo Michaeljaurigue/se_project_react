@@ -1,0 +1,22 @@
+.not_found {
+  display: flex;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.not_found__title {
+  text-align: center;
+  margin: auto;
+  font-size: 10px;
+  color: grey;
+}
+
+.not_found__link {
+  text-decoration: none;
+  color: grey;
+  font-weight: bold;
+}
+
+.not_found__link:hover {
+  color: black;
+}

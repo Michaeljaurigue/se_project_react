@@ -31,4 +31,7 @@
     width: 280px;
     height: 280px;
   }
+  .card_image {
+    max-width: 200px;
+  }
 }

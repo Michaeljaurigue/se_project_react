@@ -10,16 +10,17 @@ import { getForecastWeather, parseWeatherData } from "../../utils/weatherApi";
 import "../../fonts/fonts.css";
 import AddItemModal from "../AddItemModal/AddItemModal";
 import Profile from "../Profile/Profile";
-// import { defaultClothingItems } from "../../utils/constants";
-import { addCard, getCards, deleteCard } from "../../utils/api";
 import DeleteCardModal from "../DeleteCardModal/DeleteCardModal";
 import { ValidationContext } from "../../contexts/ValidationContext";
+import { APIKey, latitude, longitude } from "../../utils/constants";
+import api from "../../utils/api";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState({});
   const [clothingItems, setClothingItems] = useState([]);
-  const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
+  const [activeModal, setActiveModal] = useState(null);
+  const [selectedCard, setSelectedCard] = useState(null);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [disableButton, setDisableButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +37,8 @@ function App() {
     setIsLoading(true);
     const id = clothingItems.length + 1;
     const item = { id, name, link, weather };
-    addCard(item)
+    api
+      .addCard(item)
       .then(() => {
         setClothingItems([item, ...clothingItems]);
         closeModal();
@@ -51,15 +53,17 @@ function App() {
     if (
       evt.target.classList.contains("modal") ||
       evt.target.classList.contains("modal__close") ||
-      evt.target.classList.contains("modal__close-preview")
+      evt.target.classList.contains("modal__close-preview") ||
+      evt.target.classList.contains("modal__cancel")
     ) {
-      setActiveModal(null);
+      setActiveModal();
     }
   };
 
   const handleDeleteCard = () => {
     setIsLoading(true);
-    deleteCard(selectedCard.id)
+    api
+      .deleteCard(selectedCard.id)
       .then(() => {
         setClothingItems(
           clothingItems.filter((item) => item.id !== selectedCard.id)
@@ -77,7 +81,7 @@ function App() {
   };
 
   const closeModal = () => {
-    setActiveModal(null);
+    setActiveModal();
   };
 
   const handleCardClick = (card) => {
@@ -92,22 +96,25 @@ function App() {
   };
 
   useEffect(() => {
-    getCards()
-      .then((data) => {
-        setClothingItems(data);
-      })
-      .catch((error) => {
-        console.log("Error fetching clothing items:", error);
-      });
+    if (latitude && longitude) {
+      getForecastWeather(latitude, longitude, APIKey)
+        .then((data) => {
+          setWeatherData(parseWeatherData(data));
+        })
+        .catch((error) => {
+          console.log("Error fetching forecast weather data:", error);
+        });
+    }
   }, []);
 
   useEffect(() => {
-    getForecastWeather()
-      .then((data) => {
-        setWeatherData(parseWeatherData(data));
+    api
+      .getCards()
+      .then((items) => {
+        setClothingItems(items);
       })
       .catch((error) => {
-        console.log("Error fetching forecast weather data:", error);
+        console.log("Error fetching clothing items:", error);
       });
   }, []);
 
@@ -151,6 +158,9 @@ function App() {
                 onCardClick={handleCardClick}
               />
             </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
           </Switch>
           <Footer />
 
@@ -164,7 +174,7 @@ function App() {
                 handleAddItemSubmit,
               }}
             >
-              <AddItemModal onClose={closeActiveModal} isLoading={isLoading} />
+              <AddItemModal isLoading={isLoading} />
             </ValidationContext.Provider>
           )}
 

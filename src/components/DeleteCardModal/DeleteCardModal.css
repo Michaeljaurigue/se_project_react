@@ -18,7 +18,7 @@
   max-width: 670px;
   width: 100%;
   background-color: white;
-  font-family: "Cabinet-Grotesk";
+  font-family: "Cabinet-Grotesk", sans-serif;
   font-size: 20px;
   line-height: 24px;
   font-weight: bold;
@@ -47,4 +47,15 @@
 .modal__cancel {
   margin: 24px 0 0 0;
   cursor: pointer;
+  border: none;
+  background: none;
+  color: rgba(0, 0, 0, 1);
+  font-family: "Cabinet-Grotesk", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.modal__cancel:hover {
+  animation: shadow 0.5s ease-in-out infinite alternate;
 }

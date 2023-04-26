@@ -2,7 +2,7 @@ import "./DeleteCardModal.css";
 
 function DeleteCardModal({ onClose, handleDelete, isLoading }) {
   return (
-    <div className="modal modal__confirm">
+    <div className="modal modal__confirm" onClick={onClose}>
       <div className="modal__delete-container">
         <button className="modal__close modal__close-item" onClick={onClose} />
         <div className="modal__message">

@@ -1,19 +1,46 @@
-import "../WeatherCard/WeatherCard.css";
-import { weatherOptions } from "../../utils/constants.js";
+import React, { useEffect, useState } from "react";
+import "./WeatherCard.css";
+import { weatherImages } from "../../utils/constants";
+import imageError from "../../images/question.png";
 
-const WeatherCard = ({ day, type, weatherData = "", deg }) => {
-  const imageSrc = weatherOptions.filter((item) => {
-    return item.day === day && item.type === type;
-  });
+function WeatherCard({ weatherData, deg }) {
+  const [backImage, setBackImage] = useState(imageError);
+  const [backColor, setBackColor] = useState(
+    weatherData.isDay ? "rgba(0, 163, 255, 1)" : "rgba(40, 104, 151, 1)"
+  );
+  const [backImageObject, setBackImageObject] = useState();
 
-  const imageSrcUrl = imageSrc[0].url || "";
+  useEffect(() => {
+    setBackImageObject(
+      weatherImages.find((item) => {
+        return (
+          item.condition === weatherData.condition &&
+          item.isDay === weatherData.isDay
+        );
+      })
+    );
+    setBackColor(
+      weatherData.isDay ? "rgba(0, 163, 255, 1)" : "rgba(40, 104, 151, 1)"
+    );
+  }, [weatherData.condition, weatherData.isDay]);
+
+  useEffect(() => {
+    if (typeof backImageObject !== "undefined") {
+      setBackImage(backImageObject.image); //image is
+    }
+  }, [backImageObject]);
 
   return (
-    <section className="weather">
-      <div className="weather_info">{deg}</div>
-      <img src={imageSrcUrl} alt="weather info" className="weather_image" />
-    </section>
+    <div
+      className="weather"
+      style={{
+        backgroundColor: backColor,
+        backgroundImage: `url(${backImage})`,
+      }}
+    >
+      <p className="weather__info">{deg}</p>
+    </div>
   );
-};
+}
 
 export default WeatherCard;

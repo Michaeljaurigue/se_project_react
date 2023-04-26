@@ -5,13 +5,18 @@ import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import { Link } from "react-router-dom";
 
 const Header = ({ onCreateModal, weatherData }) => {
+  const currentDate = new Date().toLocaleString("default", {
+    month: "long",
+    day: "numeric",
+    });
+
   return (
     <header className="header">
       <div className="header__logo-date">
         <Link to="/">
           <img src={logoImage} alt="logo" className="header__logo" />
         </Link>
-        <div className="header__date">Chicago, 2023</div>
+        <div className="header__date">{currentDate}, {weatherData.city}</div>
       </div>
       <div className="header__button-avatar">
         <ToggleSwitch />

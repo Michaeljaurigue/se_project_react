@@ -1,19 +1,23 @@
-import { latitude, longitude, APIKey } from "../utils/constants";
+const MILLISECONDS_TO_SECONDS = 1000;
 
-const processServerResponse = (res) => {
-  if (res.ok) {
-    return res.json();
-  } else {
-    return Promise.reject(`Error: ${res.status}`);
-  }
-};
+function isDay(sunrise, sunset) {
+  return (
+    Date.now() / MILLISECONDS_TO_SECONDS > sunrise &&
+    Date.now() / MILLISECONDS_TO_SECONDS < sunset
+  );
+}
 
-const getForecastWeather = () => {
-  const weatherApi = fetch(
+function getForecastWeather(latitude, longitude, APIKey) {
+  return fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIKey}`
-  ).then(processServerResponse);
-  return weatherApi;
-};
+  ).then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    console.log(`Error: ${res.status}`);
+    return Promise.reject(`Error: ${res.status}`);
+  });
+}
 
 function parseWeatherData(data) {
   if (!data) {
@@ -25,6 +29,7 @@ function parseWeatherData(data) {
     weather.condition = data.weather[0].main;
     weather.sunrise = data.sys.sunrise;
     weather.sunset = data.sys.sunset;
+    weather.isDay = isDay(data.sys.sunrise, data.sys.sunset);
     return weather;
   }
 }

@@ -1,5 +1,6 @@
-const baseUrl =
-  "https://my-json-server.typicode.com/Michaeljaurigue/se_project_react";
+const baseUrl = "http://localhost:3001";
+// const baseUrl =
+//  "https://my-json-server.typicode.com/Michaeljaurigue/se_project_react";
 
 const processServerResponse = (res) => {
   if (res.ok) {
@@ -44,4 +45,10 @@ function deleteCard(id) {
   });
 }
 
-export { getCards, addCard, deleteCard };
+const api = {
+  getCards,
+  addCard,
+  deleteCard,
+};
+
+export default api;
