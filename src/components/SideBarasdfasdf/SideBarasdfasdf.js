@@ -1,7 +1,7 @@
 import avatar from "../../images/avatar.png";
-import "./SideBar.css";
+import "./SideBarasdfasdf.css";
 
-function SideBar() {
+function SideBarasdfasdf() {
   return (
     <div className="sidebar__info">
       <img className="sidebar__avatar" src={avatar} alt="avatar" />
@@ -10,4 +10,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default SideBarasdfasdf;
