@@ -35,8 +35,8 @@ function App() {
 
   function handleAddItemSubmit(name, link, weather) {
     setIsLoading(true);
-    const id = clothingItems.length + 1;
-    const item = { id, name, link, weather };
+    // const id = clothingItems.length + 1;
+    const item = { name, link, weather };
     api
       .addCard(item)
       .then(() => {
@@ -56,7 +56,7 @@ function App() {
       evt.target.classList.contains("modal__close-preview") ||
       evt.target.classList.contains("modal__cancel")
     ) {
-      setActiveModal();
+      closeModal();
     }
   };
 
@@ -81,7 +81,7 @@ function App() {
   };
 
   const closeModal = () => {
-    setActiveModal();
+    setActiveModal(null);
   };
 
   const handleCardClick = (card) => {
