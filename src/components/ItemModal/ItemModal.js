@@ -9,9 +9,8 @@ const ItemModal = ({ card, onClose, onDelete }) => {
           type="button"
           onClick={onClose}
         ></button>
-
+        <img className="modal__image" src={card.link} alt="Clothing" />
         <div className="modal__description-wrap">
-          <img className="modal__image" src={card.link} alt="Clothing" />
           <div className="modal__description">{card.name}</div>
           <button className="modal__delete-link" onClick={onDelete}>
             Delete Item
