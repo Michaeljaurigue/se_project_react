@@ -8,12 +8,6 @@ const ModalWithForm = ({ children, buttonText, title, name, handleSubmit }) => {
   return (
     <div className={`modal modal_type_${name}`} onClick={closeActiveModal}>
       <div className="modal__window">
-        <button
-          className="modal__close"
-          type="button"
-          onClick={closeActiveModal}
-          aria-label="Close Modal"
-        />
         <h3 className="modal__title">{title}</h3>
         <form className="modal__form" onSubmit={handleSubmit}>
           <fieldset className="modal__fieldset">

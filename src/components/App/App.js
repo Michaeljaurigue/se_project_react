@@ -35,12 +35,11 @@ function App() {
 
   function handleAddItemSubmit(name, link, weather) {
     setIsLoading(true);
-    // const id = clothingItems.length + 1;
     const item = { name, link, weather };
     api
       .addCard(item)
-      .then(() => {
-        setClothingItems([item, ...clothingItems]);
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
         closeModal();
         setIsLoading(false);
       })
