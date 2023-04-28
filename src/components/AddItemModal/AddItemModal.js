@@ -69,8 +69,6 @@ function AddItemModal({ isLoading }) {
       buttonText={isLoading ? "Saving..." : "Save"}
       handleSubmit={handleSubmit}
     >
-      <button className="modal__close" type="button"></button>
-
       <label className="modal__label">Name</label>
 
       <input

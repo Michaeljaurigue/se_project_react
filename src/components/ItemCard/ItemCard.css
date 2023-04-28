@@ -10,6 +10,7 @@
   background-repeat: no-repeat;
   border: 1px solid grey;
   border-radius: 19px;
+  overflow: auto;
 }
 
 .card:hover {
