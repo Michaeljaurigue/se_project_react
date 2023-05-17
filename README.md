@@ -1,5 +1,7 @@
 Welcome to our weather app, built using React.js!
 
+Check out the live website here: https://michaeljaurigue.github.io/se_project_react/
+
 This app has been designed to help you choose what to wear based on the current weather conditions. The app consists of several components that work together to provide a seamless user experience. Let's take a closer look at them:
 
 Header: This component displays the app's logo and name, as well as the current temperature. The temperature data is passed down from the App component as props.
