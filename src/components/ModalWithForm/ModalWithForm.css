@@ -47,6 +47,21 @@
   line-height: 20px;
 }
 
+.modal__button-modifier {
+  background-color: transparent;
+  border: none;
+  font-family: "Cabinet-Grotesk", sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: bold;
+  margin: 0 8px 0;
+}
+
+.modal__button-modifier:hover {
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
 .modal__close {
   position: absolute;
   top: 23px;
@@ -83,4 +98,18 @@
   cursor: pointer;
   background-color: rgba(0, 0, 0, 0.5);
   animation: 3s ease-in-out 0s 1 normal none running;
+}
+
+.modal__error {
+  color: red;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 0;
+  padding: 0;
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.modal__input_type_error {
+  border-bottom: 1px solid red;
 }

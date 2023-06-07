@@ -24,10 +24,10 @@ function Main({ weatherData, cards, onCardClick }) {
         <ul className="main__cards">
           {cards
             .filter((card) => card.weather === weatherType)
-            .map((filteredCards) => (
+            .map((filteredCard) => (
               <ItemCard
-                key={filteredCards.id}
-                card={filteredCards}
+                key={filteredCard.id}
+                card={filteredCard}
                 onCardClick={onCardClick}
               />
             ))}

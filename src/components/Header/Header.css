@@ -60,6 +60,27 @@
   color: black;
 }
 
+.header__profile-link:hover {
+  transform: scale(1.05);
+}
+
+.header__avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.header__default-avatar {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  background-color: blue;
+  color: white;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 500px) {
   .header {
     flex-direction: column;

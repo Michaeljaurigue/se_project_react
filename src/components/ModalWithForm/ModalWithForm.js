@@ -2,8 +2,21 @@ import "../ModalWithForm/ModalWithForm.css";
 import { ValidationContext } from "../../contexts/ValidationContext";
 import { useContext } from "react";
 
-const ModalWithForm = ({ children, buttonText, title, name, handleSubmit }) => {
-  const { disableButton, closeActiveModal } = useContext(ValidationContext);
+const ModalWithForm = ({
+  children,
+  buttonText,
+  title,
+  name,
+  handleSubmit,
+  alternateButton,
+}) => {
+  const {
+    disableButton,
+    closeActiveModal,
+    setActiveModal,
+    errorDisplay,
+    handleModalErrorDisplay,
+  } = useContext(ValidationContext);
 
   return (
     <div className={`modal modal_type_${name}`} onClick={closeActiveModal}>
@@ -25,6 +38,21 @@ const ModalWithForm = ({ children, buttonText, title, name, handleSubmit }) => {
             >
               {buttonText}
             </button>
+            {alternateButton.value && (
+              <button
+                className="modal__button-modifier"
+                type="button"
+                onClick={() => {
+                  setActiveModal(alternateButton.path);
+                  handleModalErrorDisplay(false);
+                }}
+              >
+                {alternateButton.text}
+              </button>
+            )}
+            {errorDisplay.value && (
+              <p className="modal__error">{errorDisplay.message}</p>
+            )}
           </fieldset>
         </form>
       </div>

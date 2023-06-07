@@ -1,5 +1,4 @@
-const baseUrl =
-  "https://my-json-server.typicode.com/Michaeljaurigue/se_project_react";
+const baseUrl = "http://localhost:3001";
 
 const processServerResponse = (res) => {
   if (res.ok) {
@@ -13,7 +12,7 @@ const processServerResponse = (res) => {
   }
 };
 
-async function request(url, options) {
+export async function request(url, options) {
   const res = await fetch(url, options);
   return processServerResponse(res);
 }
@@ -25,10 +24,13 @@ function getCards() {
   });
 }
 
-function addCard(data) {
+function addCard(data, token) {
   return request(`${baseUrl}/items`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}}`,
+    },
     body: JSON.stringify(data),
     id: data.id,
     name: data.name,
@@ -37,10 +39,33 @@ function addCard(data) {
   });
 }
 
-function deleteCard(id) {
+function deleteCard(id, token) {
   return request(`${baseUrl}/items/${id}`, {
     method: "DELETE",
-    headers: { "Content-Type": "application/json" },
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}}`,
+    },
+  });
+}
+
+function likeCard(id, token) {
+  return request(`${baseUrl}/items/${id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+function unlikeCard(id, token) {
+  return request(`${baseUrl}/items${id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   });
 }
 
@@ -48,6 +73,9 @@ const api = {
   getCards,
   addCard,
   deleteCard,
+  request,
+  likeCard,
+  unlikeCard,
 };
 
 export default api;
