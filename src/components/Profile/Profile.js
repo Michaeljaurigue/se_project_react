@@ -8,7 +8,7 @@ function Profile({
   onCardClick,
   addClothes,
   handleEditProfile,
-  handleSignout,
+  handleSignOut,
   handleLikeCard,
 }) {
   return (
@@ -16,7 +16,7 @@ function Profile({
       <div className="profile__side-bar">
         <SideBar
           handleEditProfile={handleEditProfile}
-          handleSignOut={handleSignout}
+          handleSignOut={handleSignOut}
         />
       </div>
       <div className="profile__main">

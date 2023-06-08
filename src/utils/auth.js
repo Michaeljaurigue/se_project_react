@@ -12,8 +12,8 @@ function signup(data) {
   });
 }
 
-function signin(data) {
-  const { email, password } = data;
+function signin(user) {
+  const { email, password } = user;
 
   return request(`${baseUrl}/signin`, {
     method: "POST",

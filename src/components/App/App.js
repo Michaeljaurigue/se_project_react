@@ -87,9 +87,9 @@ function App() {
         localStorage.setItem("token", res.token);
 
         checkToken(res.token).then((res) => {
-          console.log(res.token);
-          setCurrentUser(JSON.parse(JSON.stringify(res.data)));
-          setAlternateAvatar(getUserFirstLetter(res.data.name));
+          console.log(res);
+          setCurrentUser(res);
+          setAlternateAvatar(getUserFirstLetter(res.name));
           setIsLoggedIn(true);
           history.push("/");
         });
@@ -126,7 +126,7 @@ function App() {
     setIsLoading(true);
     const item = { name, link, weather };
     api
-      .addCard(item)
+      .addCard(item, getLocalToken())
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         closeModal();
@@ -138,7 +138,7 @@ function App() {
   }
 
   const handleLikeClick = ({ id, isLiked, user }) => {
-    const token = localStorage.getItem("jwt");
+    const token = localStorage.getItem("token");
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
@@ -249,12 +249,7 @@ function App() {
   }
 
   function getLocalToken() {
-    try {
-      const jwt = localStorage.getItem("token");
-      return jwt;
-    } catch {
-      return null;
-    }
+    return localStorage.getItem("token");
   }
 
   function checkAccess() {
@@ -263,8 +258,8 @@ function App() {
     if (jwt) {
       checkToken(jwt)
         .then((res) => {
-          setCurrentUser(JSON.parse(JSON.stringify(res.data)));
-          setAlternateAvatar(getUserFirstLetter(res.data.name));
+          setCurrentUser(res);
+          setAlternateAvatar(getUserFirstLetter(res.name));
           setIsLoggedIn(true);
           history.push("/");
         })
@@ -336,127 +331,125 @@ function App() {
             weatherData,
           }}
         >
-          <Router>
-            <Header
-              weatherData={weatherData}
-              onCreateModal={handleAddClothes}
-              onSignUp={handleSignup}
-              onSignIn={handleSignin}
-            />
-            <Switch>
-              <ProtectedRoute path="/profile">
-                <Profile
-                  cards={clothingItems}
-                  onCardClick={handleCardClick}
-                  addClothes={handleAddClothes}
-                  handleEditProfile={handleEditProfile}
-                  handleSignOut={handleSignOut}
-                  handleLikeCard={handleLikeClick}
-                />
-              </ProtectedRoute>
-              <Route path="/main">
-                <Main
-                  weatherData={weatherData}
-                  cards={clothingItems}
-                  onCardClick={handleCardClick}
-                  handleLikeCard={handleLikeClick}
-                />
-              </Route>
-              <Route path="/">
-                {isLoggedIn ? (
-                  <Redirect to="/profile" />
-                ) : (
-                  <Redirect to="/main" />
-                )}
-              </Route>
-              <Route path="*">
-                <NotFound />
-              </Route>
-            </Switch>
-            <Footer />
-
-            {activeModal === "signup" && (
-              <ValidationContext.Provider
-                value={{
-                  disableButton,
-                  errorDisplay,
-                  setDisableButton,
-                  handleSubmitButtonChange,
-                  closeActiveModal,
-                  handleSignupSubmit,
-                  setActiveModal,
-                  handleModalErrorDisplay,
-                }}
-              >
-                <RegisterModal isLoading={isLoading} />
-              </ValidationContext.Provider>
-            )}
-
-            {activeModal === "signin" && (
-              <ValidationContext.Provider
-                value={{
-                  disableButton,
-                  errorDisplay,
-                  setDisableButton,
-                  handleSubmitButtonChange,
-                  closeActiveModal,
-                  handleLoginSubmit,
-                  setActiveModal,
-                  handleModalErrorDisplay,
-                }}
-              >
-                <LoginModal isLoading={isLoading} />
-              </ValidationContext.Provider>
-            )}
-
-            {activeModal === "edit" && (
-              <ValidationContext.Provider
-                value={{
-                  disableButton,
-                  errorDisplay,
-                  setDisableButton,
-                  handleSubmitButtonChange,
-                  closeActiveModal,
-                  handleUpdateSubmit,
-                  setActiveModal,
-                  handleModalErrorDisplay,
-                }}
-              >
-                <EditProfileModal isLoading={isLoading} />
-              </ValidationContext.Provider>
-            )}
-
-            {activeModal === "create" && (
-              <ValidationContext.Provider
-                value={{
-                  disableButton,
-                  setDisableButton,
-                  handleSubmitButtonChange,
-                  closeActiveModal,
-                  handleAddItemSubmit,
-                }}
-              >
-                <AddItemModal isLoading={isLoading} />
-              </ValidationContext.Provider>
-            )}
-
-            {activeModal === "preview" && (
-              <ItemModal
-                card={selectedCard}
+          <Header
+            weatherData={weatherData}
+            onCreateModal={handleAddClothes}
+            onSignUp={handleSignup}
+            onSignIn={handleSignin}
+          />
+          <Switch>
+            <ProtectedRoute path="/profile">
+              <Profile
+                cards={clothingItems}
                 onCardClick={handleCardClick}
-                onClose={closeActiveModal}
-                onDelete={handleConfirmDelete}
+                addClothes={handleAddClothes}
+                handleEditProfile={handleEditProfile}
+                handleSignOut={handleSignOut}
+                handleLikeCard={handleLikeClick}
               />
-            )}
+            </ProtectedRoute>
+            <Route path="/main">
+              <Main
+                weatherData={weatherData}
+                cards={clothingItems}
+                onCardClick={handleCardClick}
+                handleLikeCard={handleLikeClick}
+              />
+            </Route>
+            <Route path="/">
+              {isLoggedIn ? (
+                <Redirect to="/profile" />
+              ) : (
+                <Redirect to="/main" />
+              )}
+            </Route>
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
+          <Footer />
 
-            {activeModal === "confirm" && (
-              <DeleteCardModal
-                onClose={closeActiveModal}
-                handleDelete={handleDeleteCard}
-                isLoading={isLoading}
-              />
-            )}
-          </Router>
+          {activeModal === "signup" && (
+            <ValidationContext.Provider
+              value={{
+                disableButton,
+                errorDisplay,
+                setDisableButton,
+                handleSubmitButtonChange,
+                closeActiveModal,
+                handleSignupSubmit,
+                setActiveModal,
+                handleModalErrorDisplay,
+              }}
+            >
+              <RegisterModal isLoading={isLoading} />
+            </ValidationContext.Provider>
+          )}
+
+          {activeModal === "signin" && (
+            <ValidationContext.Provider
+              value={{
+                disableButton,
+                errorDisplay,
+                setDisableButton,
+                handleSubmitButtonChange,
+                closeActiveModal,
+                handleLoginSubmit,
+                setActiveModal,
+                handleModalErrorDisplay,
+              }}
+            >
+              <LoginModal isLoading={isLoading} />
+            </ValidationContext.Provider>
+          )}
+
+          {activeModal === "edit" && (
+            <ValidationContext.Provider
+              value={{
+                disableButton,
+                errorDisplay,
+                setDisableButton,
+                handleSubmitButtonChange,
+                closeActiveModal,
+                handleUpdateSubmit,
+                setActiveModal,
+                handleModalErrorDisplay,
+              }}
+            >
+              <EditProfileModal isLoading={isLoading} />
+            </ValidationContext.Provider>
+          )}
+
+          {activeModal === "create" && (
+            <ValidationContext.Provider
+              value={{
+                disableButton,
+                setDisableButton,
+                handleSubmitButtonChange,
+                closeActiveModal,
+                handleAddItemSubmit,
+              }}
+            >
+              <AddItemModal isLoading={isLoading} />
+            </ValidationContext.Provider>
+          )}
+
+          {activeModal === "preview" && (
+            <ItemModal
+              card={selectedCard}
+              onCardClick={handleCardClick}
+              onClose={closeActiveModal}
+              onDelete={handleConfirmDelete}
+            />
+          )}
+
+          {activeModal === "confirm" && (
+            <DeleteCardModal
+              onClose={closeActiveModal}
+              handleDelete={handleDeleteCard}
+              isLoading={isLoading}
+            />
+          )}
         </CurrentTemperatureUnitContext.Provider>
       </CurrentUserContext.Provider>
     </div>

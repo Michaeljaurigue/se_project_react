@@ -44,5 +44,6 @@ export function useFormAndValidation() {
     resetForm,
     showInputError,
     hideInputError,
+    setValues,
   };
 }

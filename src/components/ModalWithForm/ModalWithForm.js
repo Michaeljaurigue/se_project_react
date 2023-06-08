@@ -38,7 +38,7 @@ const ModalWithForm = ({
             >
               {buttonText}
             </button>
-            {alternateButton.value && (
+            {alternateButton && (
               <button
                 className="modal__button-modifier"
                 type="button"
@@ -50,7 +50,7 @@ const ModalWithForm = ({
                 {alternateButton.text}
               </button>
             )}
-            {errorDisplay.value && (
+            {errorDisplay && (
               <p className="modal__error">{errorDisplay.message}</p>
             )}
           </fieldset>

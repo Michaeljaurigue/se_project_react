@@ -19,7 +19,7 @@ const ItemModal = ({ card, onClose, onDelete }) => {
           type="button"
           onClick={onClose}
         ></button>
-        <img className="modal__image" src={card.link} alt={card.name} />
+        <img className="modal__image" src={card.imageUrl} alt={card.name} />
         <div className="modal__description-wrap">
           <div className="modal__description">{card.name}</div>
           {isOwn && (
