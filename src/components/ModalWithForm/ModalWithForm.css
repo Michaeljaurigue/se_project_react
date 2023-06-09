@@ -42,6 +42,15 @@
   border: none;
 }
 
+.modal__button-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
 .modal__title {
   font-size: 16px;
   line-height: 20px;
@@ -55,6 +64,7 @@
   line-height: 20px;
   font-weight: bold;
   margin: 0 8px 0;
+  color:rgba(0, 0, 0, 0.3);
 }
 
 .modal__button-modifier:hover {

@@ -161,29 +161,6 @@ function App() {
           .catch((err) => console.log(err));
   };
 
-  // function handleLikeCard(id, liked) {
-  //   const token = localStorage.getItem("token");
-
-  //   if (!liked) {
-  //     handleLikeCard(id, token)
-  //       .then((updatedCard) => {
-  //         setClothingItems((cards) =>
-  //           cards.map((card) => (card._id === id ? updatedCard : card))
-  //         );
-  //       })
-  //       .catch((err) => console.log(errorMessageHandler(err)));
-  //   } else {
-  //     api
-  //       .unlikeCard(id, token)
-  //       .then((updatedCard) => {
-  //         setClothingItems((cards) =>
-  //           cards.map((card) => (card._id === id ? updatedCard : card))
-  //         );
-  //       })
-  //       .catch((err) => console.log(errorMessageHandler(err)));
-  //   }
-  // }
-
   const closeActiveModal = (evt) => {
     if (
       evt.target.classList.contains("modal") ||

@@ -31,28 +31,30 @@ const ModalWithForm = ({
         <form className="modal__form" onSubmit={handleSubmit}>
           <fieldset className="modal__fieldset">
             {children}
-            <button
-              className="modal__submit-button"
-              type="submit"
-              disabled={disableButton}
-            >
-              {buttonText}
-            </button>
-            {alternateButton && (
+            <div className="modal__button-container">
               <button
-                className="modal__button-modifier"
-                type="button"
-                onClick={() => {
-                  setActiveModal(alternateButton.path);
-                  handleModalErrorDisplay(false);
-                }}
+                className="modal__submit-button"
+                type="submit"
+                disabled={disableButton}
               >
-                {alternateButton.text}
+                {buttonText}
               </button>
-            )}
-            {errorDisplay && (
-              <p className="modal__error">{errorDisplay.message}</p>
-            )}
+              {alternateButton && (
+                <button
+                  className="modal__button-modifier"
+                  type="button"
+                  onClick={() => {
+                    setActiveModal(alternateButton.path);
+                    handleModalErrorDisplay(false);
+                  }}
+                >
+                  {alternateButton.text}
+                </button>
+              )}
+              {errorDisplay && (
+                <p className="modal__error">{errorDisplay.message}</p>
+              )}
+            </div>
           </fieldset>
         </form>
       </div>
