@@ -19,7 +19,7 @@ function ClothesSection({ cards, onCardClick, addClothes, handleLikeCard }) {
           .filter((card) => card.owner === currentUser?._id)
           .map((filteredCard) => (
             <ItemCard
-              // key={filteredCard._id}
+              key={filteredCard._id}
               card={filteredCard}
               onCardClick={onCardClick}
               handleLikeCard={handleLikeCard}

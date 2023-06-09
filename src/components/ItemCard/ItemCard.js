@@ -1,18 +1,29 @@
 import "../ItemCard/ItemCard.css";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { useState } from "react";
 
 const ItemCard = ({ card, onCardClick, handleLikeCard }) => {
   const { isLoggedIn, currentUser } = useContext(CurrentUserContext);
-  const [isLiked, setIsLiked] = useState(
-    card.likes.some((like) => like === currentUser._id)
-  );
+  const [isLiked, setIsLiked] = useState(false);
 
-  function handleLikeClick(e) {
+  useEffect(() => {
+    setIsLiked(card.likes.some((like) => like === currentUser._id));
+  }, [card, currentUser]);
+
+  async function handleLikeClick(e) {
     e.stopPropagation();
-    handleLikeCard(card._id, isLiked);
+
+    // Optimistically update local state
     setIsLiked(!isLiked);
+
+    try {
+      // Make the server request to update actual data
+      await handleLikeCard(card._id, !isLiked);
+    } catch (error) {
+      console.error("Failed to update like status:", error);
+      // Revert local state if server request fails
+      setIsLiked(!isLiked);
+    }
   }
 
   function setLikeButtonClassNames() {
@@ -23,7 +34,7 @@ const ItemCard = ({ card, onCardClick, handleLikeCard }) => {
 
   return (
     <li
-      key={card._id}
+      key={currentUser._id}
       className="card"
       style={{ backgroundImage: `url(${card.imageUrl})` }}
       onClick={() => {

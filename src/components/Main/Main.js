@@ -26,7 +26,7 @@ function Main({ weatherData, cards, onCardClick, handleLikeCard }) {
             .filter((card) => card.weather === weatherType)
             .map((filteredCard) => (
               <ItemCard
-                // key={filteredCard._id}
+                key={filteredCard._id}
                 card={filteredCard}
                 onCardClick={onCardClick}
                 handleLikeCard={handleLikeCard}
