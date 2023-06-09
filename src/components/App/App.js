@@ -87,7 +87,6 @@ function App() {
         localStorage.setItem("token", res.token);
 
         checkToken(res.token).then((res) => {
-          console.log(res);
           setCurrentUser(res);
           setAlternateAvatar(getUserFirstLetter(res.name));
           setIsLoggedIn(true);
@@ -111,7 +110,7 @@ function App() {
 
     updateUser(data)
       .then((res) => {
-        setCurrentUser(res.data);
+        setCurrentUser(res);
         closeModal();
       })
       .catch((err) => {
@@ -122,14 +121,15 @@ function App() {
       });
   }
 
-  function handleAddItemSubmit(name, link, weather) {
+  function handleAddItemSubmit(name, imageUrl, weather) {
     setIsLoading(true);
-    const item = { name, link, weather };
+    const item = { name, imageUrl, weather };
     api
       .addCard(item, getLocalToken())
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         closeModal();
+        handleFetchCards();
         setIsLoading(false);
       })
       .catch((err) => {
@@ -137,25 +137,25 @@ function App() {
       });
   }
 
-  const handleLikeClick = ({ id, isLiked, user }) => {
+  const handleLikeClick = (id, isLiked) => {
     const token = localStorage.getItem("token");
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
         api
-          .addCardLike({ id, user }, token)
+          .likeCard(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
         api
-          .removeCardLike({ id, user }, token)
+          .unlikeCard(id, token)
           .then((updatedCard) => {
             setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard : c))
+              cards.map((c) => (c._id === id ? updatedCard.data : c))
             );
           })
           .catch((err) => console.log(err));
@@ -198,10 +198,10 @@ function App() {
   const handleDeleteCard = () => {
     setIsLoading(true);
     api
-      .deleteCard(selectedCard.id)
+      .deleteCard(selectedCard._id, getLocalToken())
       .then(() => {
         setClothingItems(
-          clothingItems.filter((item) => item.id !== selectedCard.id)
+          clothingItems.filter((item) => item._id !== selectedCard._id)
         );
         closeModal();
         setIsLoading(false);
@@ -290,7 +290,7 @@ function App() {
     }
   }, []);
 
-  useEffect(() => {
+  function handleFetchCards() {
     api
       .getCards()
       .then((items) => {
@@ -299,6 +299,10 @@ function App() {
       .catch((error) => {
         console.log("Error fetching clothing items:", error);
       });
+  }
+
+  useEffect(() => {
+    handleFetchCards();
   }, []);
 
   useEffect(() => {
@@ -348,6 +352,7 @@ function App() {
                 handleLikeCard={handleLikeClick}
               />
             </ProtectedRoute>
+
             <Route path="/main">
               <Main
                 weatherData={weatherData}

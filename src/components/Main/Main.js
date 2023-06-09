@@ -5,7 +5,7 @@ import "../Main/Main.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { convertTemp, weatherTemp } from "../../utils/tempLogic";
 
-function Main({ weatherData, cards, onCardClick }) {
+function Main({ weatherData, cards, onCardClick, handleLikeCard }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   const deg = convertTemp(weatherData.temp, currentTemperatureUnit);
   const weatherType = weatherTemp(weatherData.temp);
@@ -26,9 +26,10 @@ function Main({ weatherData, cards, onCardClick }) {
             .filter((card) => card.weather === weatherType)
             .map((filteredCard) => (
               <ItemCard
-                key={filteredCard._id}
+                // key={filteredCard._id}
                 card={filteredCard}
                 onCardClick={onCardClick}
+                handleLikeCard={handleLikeCard}
               />
             ))}
         </ul>

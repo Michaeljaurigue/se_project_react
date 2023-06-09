@@ -9,11 +9,11 @@ function convertTemp(temp, desiredUnit) {
 }
 
 function weatherTemp(temp) {
-  if (temp >= 86) {
+  if (temp >= 61) {
     return "hot";
-  } else if (temp >= 66 && temp <= 85) {
+  } else if (temp >= 34 && temp <= 60) {
     return "warm";
-  } else if (temp <= 65) {
+  } else if (temp <= 33) {
     return "cold";
   }
 }

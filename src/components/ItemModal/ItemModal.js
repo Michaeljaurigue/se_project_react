@@ -7,7 +7,7 @@ const ItemModal = ({ card, onClose, onDelete }) => {
 
   const isOwn = card.owner === currentUser._id;
 
-  const itemDeleteButtonClassName = `item__delete ${
+  const itemDeleteButtonClassName = `item__delete modal__delete-link ${
     isOwn ? "item__delete_visible" : "item__delete_hidden"
   }`;
 

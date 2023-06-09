@@ -23,6 +23,7 @@ const ItemCard = ({ card, onCardClick, handleLikeCard }) => {
 
   return (
     <li
+      key={card._id}
       className="card"
       style={{ backgroundImage: `url(${card.imageUrl})` }}
       onClick={() => {
@@ -42,19 +43,5 @@ const ItemCard = ({ card, onCardClick, handleLikeCard }) => {
     </li>
   );
 };
-//   return (
-//     <li key={card._id} className="card">
-//       <p className="card_name">{card.name}</p>
-//       <img
-//         src={card.link}
-//         alt="Clothing Items"
-//         className="card_image"
-//         onClick={() => {
-//           onCardClick(card);
-//         }}
-//       />
-//     </li>
-//   );
-// };
 
 export default ItemCard;

@@ -29,10 +29,10 @@ function addCard(data, token) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(data),
-    id: data.id,
+    id: data._id,
     name: data.name,
     link: data.link,
     weather: data.weather,
@@ -44,7 +44,7 @@ function deleteCard(id, token) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}}`,
+      Authorization: `Bearer ${token}`,
     },
   });
 }
@@ -60,7 +60,7 @@ function likeCard(id, token) {
 }
 
 function unlikeCard(id, token) {
-  return request(`${baseUrl}/items${id}/likes`, {
+  return request(`${baseUrl}/items/${id}/likes`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",

@@ -18,7 +18,7 @@ const Header = ({ onCreateModal, weatherData, onSignUp, onSignIn }) => {
   return (
     <header className="header">
       <div className="header__logo-date">
-        <Link to="/">
+        <Link to="/main">
           <img src={logoImage} alt="logo" className="header__logo" />
         </Link>
         <div className="header__date">
@@ -54,12 +54,12 @@ const Header = ({ onCreateModal, weatherData, onSignUp, onSignIn }) => {
         )}
         {isLoggedIn && (
           <Link to="/profile" className="header__profile-link">
-            <p className="header__username">{currentUser.name}</p>
-            {currentUser.avatar !==
+            <p className="header__username">{currentUser?.name}</p>
+            {currentUser?.avatar !==
             "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/Elise.png?etag=0807a449ad64b18fe7cd94781c622e6d" ? (
               <img
                 className="header__avatar"
-                src={currentUser.avatar}
+                src={currentUser?.avatar}
                 alt="avatar"
               />
             ) : (
