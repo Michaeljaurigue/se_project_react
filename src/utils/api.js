@@ -1,4 +1,11 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.wtwrapp.weatherlab.xyz/"
+    : "http://localhost:3001";
+
+//deployed-backend-url is a URL to your deployed back end
+
+// const baseUrl = "http://localhost:3001";
 
 const processServerResponse = (res) => {
   if (res.ok) {

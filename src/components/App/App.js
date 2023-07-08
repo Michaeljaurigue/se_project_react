@@ -364,7 +364,7 @@ function App() {
                 handleModalErrorDisplay,
               }}
             >
-              <RegisterModal isLoading={isLoading} />
+              <RegisterModal c={isLoading} />
             </ValidationContext.Provider>
           )}
 
