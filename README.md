@@ -1,10 +1,10 @@
-Welcome to our weather app, built using React.js!
+Welcome to our weather app, built using React.js by Michael Jaurigue!
 
 Check out the live website here:
 
-https://www.wtwrapp.weatherlab.xyz/main
+https://wtwr.devwonders.com/main
 
-Check out the back end API here: https://github.com/Michaeljaurigue/se_project_express/ and here https://api.wtwrapp.weatherlab.xyz/
+Check out the back end API here: https://github.com/Michaeljaurigue/se_project_express/ and here https://api.wtwr.devwonders.com/main
 
 This app has been designed to help you choose what to wear based on the current weather conditions. The app consists of several components that work together to provide a seamless user experience. Let's take a closer look at them:
 
