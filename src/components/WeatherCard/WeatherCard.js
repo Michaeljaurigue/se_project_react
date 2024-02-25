@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import "./WeatherCard.css";
 import { weatherImages } from "../../utils/constants";
 import imageError from "../../images/question.png";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
 function WeatherCard({ weatherData, deg }) {
   const [backImage, setBackImage] = useState(imageError);

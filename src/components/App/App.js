@@ -136,23 +136,23 @@ function App() {
     // Check if this card is now liked
     isLiked
       ? // if so, send a request to add the user's id to the card's likes array
-        api
-          .likeCard(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard.data : c))
-            );
-          })
-          .catch((err) => console.log(err))
+      api
+        .likeCard(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard.data : c))
+          );
+        })
+        .catch((err) => console.log(err))
       : // if not, send a request to remove the user's id from the card's likes array
-        api
-          .unlikeCard(id, token)
-          .then((updatedCard) => {
-            setClothingItems((cards) =>
-              cards.map((c) => (c._id === id ? updatedCard.data : c))
-            );
-          })
-          .catch((err) => console.log(err));
+      api
+        .unlikeCard(id, token)
+        .then((updatedCard) => {
+          setClothingItems((cards) =>
+            cards.map((c) => (c._id === id ? updatedCard.data : c))
+          );
+        })
+        .catch((err) => console.log(err));
   };
 
   const closeActiveModal = (evt) => {
@@ -276,9 +276,13 @@ function App() {
     handleFetchCards();
   }, []);
 
+
   useEffect(() => {
+    // eslint-disable-next-line
     checkAccess();
+    // eslint-disable-next-line
   }, []);
+
 
   useEffect(() => {
     if (!activeModal) return;
