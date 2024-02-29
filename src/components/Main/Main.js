@@ -4,7 +4,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import "../Main/Main.css";
 import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext";
 import { convertTemp, weatherTemp } from "../../utils/tempLogic";
-import HeroBanner from "../HeroBanner/HeroBanner";
+// import HeroBanner from "../HeroBanner/HeroBanner";
 //make it so that if logged in, hero banner will not show
 
 function Main({ weatherData, cards, onCardClick, handleLikeCard, onSignUp, isLoggedIn }) {
