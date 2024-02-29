@@ -334,6 +334,8 @@ function App() {
                 cards={clothingItems}
                 onCardClick={handleCardClick}
                 handleLikeCard={handleLikeClick}
+                onSignUp={handleSignup}
+                isLoggedIn={isLoggedIn}
               />
             </Route>
             <Route path="/">
